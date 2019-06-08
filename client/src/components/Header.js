@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-  background-color: #ED553B;
+  background-color: #112F41;
   color: #FFF;
   font-size: 1.6rem;
   font-weight: 700;
@@ -10,7 +10,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Header = () => {
-  return <HeaderContainer>Header</HeaderContainer>
+  return <HeaderContainer>Chat</HeaderContainer>
 }
 
 export default Header;

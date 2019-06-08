@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { sendMessage } from '../actions';
 
 const InputMessage = styled.input`
   border: none;
@@ -36,13 +39,22 @@ const SendMessage = styled.button`
   }
 `;
 
-const NewMessageBox = () => {
+const NewMessageBox = ({ sendMessage }) => {
+  const [state, setState] = useState('');
   return (
     <NewMessageContainer>
-      <InputMessage />
-      <SendMessage><SendImage src="send-button.svg" /></SendMessage>
+      <InputMessage placeholder="Wpisz wiadomość" onKeyPress={ev => {if (ev.key === 'Enter' && state.trim() !== '') {sendMessage(state); setState('')}}} value={state} onChange={ev => setState(ev.target.value)} />
+      <SendMessage onClick={ev => {if (state.trim() !== '') {sendMessage(state); setState('');}}}><SendImage src="send-button.svg" /></SendMessage>
     </NewMessageContainer>
   )
 }
 
-export default NewMessageBox;
+NewMessageBox.propTypes = {
+  sendMessage: PropTypes.func
+}
+
+const mapDispatchToProps = dispatch => ({
+  sendMessage: text => dispatch(sendMessage(text))
+});
+
+export default connect(null, mapDispatchToProps)(NewMessageBox);
