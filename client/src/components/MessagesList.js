@@ -7,12 +7,18 @@ import Message from './Message';
 
 const MessagesListContainer = styled.div`
   align-items: flex-start;
+  bottom: 0;
   display: flex;
   flex-direction: column-reverse;
   flex-wrap: no-wrap;
-  height: 513px;
+  height: 560px;
   overflow-x: auto;
-  padding: 10px;
+  padding: 10px 10px 60px 10px;
+  position: relative;
+  top: 0;
+  @media (max-width: 400px) {
+    height: calc(100vh - 39px)
+  }
 `;
 
 const MessagesList = ({ messages }) => {

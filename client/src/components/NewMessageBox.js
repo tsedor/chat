@@ -16,11 +16,15 @@ const InputMessage = styled.input`
 `;
 
 const NewMessageContainer = styled.div`
+  background-color: #FFFFFF;
   border-top: 1px solid #112F41;
   bottom: 0;
   display: flex;
   position: absolute;
   width: 100%;
+  @media (max-width: 400px) {
+    position: fixed;
+  }
 `;
 
 const SendImage = styled.img`
